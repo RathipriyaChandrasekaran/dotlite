@@ -1,0 +1,11 @@
+#backgroundimage{
+	display: block;
+    
+    background-repeat: no-repeat ;
+}
+
+#play{
+	position: absolute;
+	top: 270px;
+	left: 200px;
+}

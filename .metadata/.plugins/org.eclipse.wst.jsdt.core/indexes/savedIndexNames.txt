@@ -1,0 +1,12 @@
+INDEX VERSION 1.3+C:\Users\Rathipriya\workspace\dotlite\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+3753335359.index
+1013683283.index
+2477209977.index
+2113532730.index
+4258540339.index
+3428383905.index
+3293435556.index
+4064059124.index
+4245090102.index
+3755273901.index
+4137466768.index

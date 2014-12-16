@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+     <meta charset="utf-8" />
+     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+     <link rel="stylesheet" type="text/css" href="css/appstyle.css"/>
+     <script src="js/main.js"></script>
+</head>
+<body>
+  
+  <canvas id="canvas1" width="400" height="300"></canvas>
+  
+  <script type="text/javascript">
+
+  var animals = [
+                 {
+                     url : "http://data1.whicdn.com/images/30005420/large.png", 
+                     //points:[{"x":126,"y":273},{"x":123,"y":166},{"x":122,"y":49},{"x":207,"y":59},{"x":317,"y":71},{"x":254,"y":164},{"x":164,"y":195},{"x":178,"y":291},{"x":217,"y":283},{"x":224,"y":224},{"x":274,"y":294},{"x":283,"y":218},{"x":318,"y":216},{"x":318,"y":278},{"x":362,"y":271},{"x":372,"y":173},{"x":347,"y":103}]
+
+                 }
+
+             ];
+
+             var animalSelected = 0;
+             var animal = animals[animalSelected];
+
+             var can = document.getElementById('canvas1');
+             var context = can.getContext('2d');
+             var radius = 20;
+             var readyToTouchClr = "green";
+             var readyToConnectClr = "blue";
+             var clr = "red";
+
+             var height = 300;
+             var width = 400;
+
+             context.beginPath();
+             context.rect(1, 1, width-2, height-2);
+             context.fillStyle: 'yellow';
+             context.fill();
+             context.lineWidth = 1;
+             context.strokeStyle = 'black';
+             context.stroke();
+
+            
+             function drawCircle(point, text) {
+               context.beginPath();
+               context.arc(point.x, point.y, radius, 0, 2 * Math.PI, false);
+               context.fillStyle = clr;
+               context.fill();
+               context.lineWidth = 2;
+               context.strokeStyle = '#003300';
+               context.stroke();
+               
+               context.fillStyle = "white";
+               var font = "bold " + radius +"px serif";
+               context.font = font;
+               // Move it down by half the text height and left by half the text width
+               var width = context.measureText(text).width;
+               var height = context.measureText("w").width; // this is a GUESS of height
+               context.fillText(text, point.x - (width/2), point.y + (height/2));
+             }
+             for(var i in animal.points) {
+            	   var point = animal.points[i];
+            	   drawCircle(point, i+1);
+            	  }
+  
+   
+  </script>
+  </body>
+  </html>

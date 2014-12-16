@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+     <meta charset="utf-8" />
+     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+     <link rel="stylesheet" type="text/css" href="css/appstyle.css"/>
+     <script src="js/main.js"></script>
+</head>
+<body>
+ 
+  <canvas id="canvas" width="520px" height="300px"></canvas>
+  
+  <a href="menupage.html"><button id="play" class="button" style="background-color: orange !important;">PLAY</button></a>
+  <button id="pref" class="smallbutton">Preferences </button>
+  <button id="moregame" class="smallbutton"> More game</button>
+  <button id="fullversion" class="smallbutton">Full Version</button>
+ <script>
+ var points= new Array();
+ var canvas = document.getElementById('canvas');
+ var context = canvas.getContext('2d');
+ var height = 300;
+ var width = 500;
+
+ context.beginPath();
+ context.rect(1, 1, width, height);
+ context.fill();
+ context.lineWidth = 1;
+ context.strokeStyle = 'black';
+ context.stroke();
+
+ function loadCanvas(dataURL, _cb) {
+   
+     // load image from data url
+     var imageObj = new Image();
+     imageObj.onload = function() {
+         var imgWidth = this.width;
+         var imgHeight = this.height;
+         var posX = (width - imgWidth)/2;
+         var posY = (height - imgHeight)/2;
+         context.drawImage(this, -5, posY + 10);
+         if (_cb) _cb();
+     };
+     
+     imageObj.src = dataURL;
+ }
+
+loadCanvas("images/jungle.png", function() {
+loadCanvas("images/girraffe.png");
+});
+ 
+
+
+
+ </script>
+
+
+
+
+
+</body> 
+</html>   

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;ConnectDots/images/home_button.png&apos; to &apos;homebutton.png&apos;" description="Rename resource &apos;home_button.png&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="images/home_button.png" name="homebutton.png" stamp="1418586216616" updateReferences="true"/>
+</session>

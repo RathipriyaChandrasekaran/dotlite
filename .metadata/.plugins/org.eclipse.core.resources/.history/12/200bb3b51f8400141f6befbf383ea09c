@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+     <meta charset="utf-8" />
+     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+     <link rel="stylesheet" type="text/css" href="css/appstyle.css"/>
+     <script src="js/main.js"></script>
+</head>
+<body>
+  
+  <canvas id="canvas1" width="520" height="302"></canvas>
+  <img src="images/arrowkeys.png" id="homebutton" style="  position: absolute; top:150px; margin-left: 10px;"></img>
+  
+ 
+  <script type="text/javascript">
+
+  var animals = [
+                 {
+                     url : "http://data1.whicdn.com/images/30005420/large.png", 
+                    points : [{"x":115,"y":246},{"x":115,"y":166},{"x":104,"y":84},{"x":115,"y":14},{"x":176,"y":25},{"x":236,"y":50},{"x":312,"y":42},{"x":255,"y":139},{"x":199,"y":140},{"x":151,"y":172},{"x":170,"y":254},{"x":210,"y":257},{"x":210,"y":188},{"x":236,"y":272},{"x":274,"y":268},{"x":271,"y":182},{"x":310,"y":170},{"x":308,"y":251},{"x":351,"y":242},{"x":367,"y":147},{"x":327,"y":76}]
+                 }
+                 ];
+
+             var animalSelected = 0;
+             var animal = animals[animalSelected];
+
+             var can = document.getElementById('canvas1');
+             var context = can.getContext('2d');
+             var radius = 12;
+             var readyToTouchClr = "green";
+             var readyToConnectClr = "yellow";
+             var clr = "red";
+
+             var height = 305;
+             var width = 520;
+
+             context.beginPath();
+             context.rect(1, 1, width-2, height-2);
+             //context.fillStyle= 'green';
+             context.fill();
+             context.lineWidth = 1;
+             context.strokeStyle = 'black';
+             context.stroke();
+
+             function loadCanvas(dataURL, _cb) {
+            	   
+                 // load image from data url
+                 var imageObj = new Image();
+                 imageObj.onload = function() {
+                     var imgWidth = this.width;
+                     var imgHeight = this.height;
+                     var posX = (width - imgWidth)/2;
+                     var posY = (height - imgHeight)/2;
+                     context.drawImage(this, -5, posY + 10);
+                     if (_cb) _cb();
+                 };
+                 
+                 imageObj.src = dataURL;
+             }
+
+            loadCanvas("images/jungle.png", function() {
+                
+            	   for(var i in animal.points) {
+                	   var point = animal.points[i];
+                	   drawCircle(point, i);
+                	  }
+      
+            });
+            
+             function drawCircle(point, text) {
+               context.beginPath();
+               context.arc(point.x, point.y, radius, 0, 2 * Math.PI, false);
+               context.fillStyle = clr;
+               context.fill();
+               context.lineWidth = 2;
+               context.strokeStyle = '#003300';
+               context.stroke();
+
+               
+               context.fillStyle = "white";
+               var font = "bold " + radius +"px serif";
+               context.font = font;
+               // Move it down by half the text height and left by half the text width
+               var width = context.measureText(text).width;
+               var height = context.measureText("w").width; // this is a GUESS of height
+               context.fillText(text, point.x - (width/2), point.y + (height/2));
+             }
+              
+             var c = document.getElementById("canvas1");
+             var ctx = c.getContext("2d");
+             var img = document.getElementById("homebutton");
+             ctx.drawImage(img, 20, 20);
+   
+  </script>
+  </body>
+  </html>

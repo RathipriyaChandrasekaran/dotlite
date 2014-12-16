@@ -1,0 +1,5 @@
+#rightarrow {
+	position: absolute !important;
+	margin-left: 80px !important;
+	top: 30px !important;
+}
